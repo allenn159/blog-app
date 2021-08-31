@@ -1,16 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import NavBar from "./NavBar";
 import { useSelector, useDispatch } from "react-redux";
-import { addNewBlog } from "../features/counterSlice";
-import AddIcon from "@material-ui/icons/Add";
+import {
+  addNewBlog,
+  deleteBlog,
+  toggleFavorite,
+} from "../features/counterSlice";
+
+import {
+  AddIcon,
+  DeleteIcon,
+  FavoriteBorderIcon,
+  FavoriteIcon,
+} from "../utils/materialUI_icons/index";
+
+import { Grid, Paper, Typography } from "@material-ui/core";
+import useStyles from "./styles";
+
 import { v4 as uuidv4 } from "uuid";
 
-const Frontpage = () => {
+const Frontpage = ({ search }) => {
   const dispatch = useDispatch();
   const blogs = useSelector((state) => state.blogs.blogCollection);
   const [newTitle, setNewTitle] = useState("");
   const [newBody, setNewBody] = useState("");
+  const [filteredBlogs, setFilteredBlogs] = useState(blogs || []);
 
-  console.log(blogs);
+  const classes = useStyles();
+  const didMount = useRef(false);
 
   const onSubmitNewBlog = (e) => {
     e.preventDefault();
@@ -29,23 +46,60 @@ const Frontpage = () => {
     setNewBody("");
   };
 
+  useEffect(() => {
+    setFilteredBlogs(blogs);
+  }, [blogs]);
+
+  useEffect(() => {
+    if (didMount.current) {
+      onHandleFilter(search);
+    } else {
+      didMount.current = true;
+    }
+  }, [search]);
+
+  const onHandleFilter = (search) => {
+    const searchResults = blogs.filter((blog) => {
+      if (blog.title.toLowerCase().includes(search.toLowerCase())) {
+        return blog;
+      }
+    });
+    setFilteredBlogs(searchResults);
+  };
+
   return (
     <div>
-      {blogs.map((b) => (
-        <div key={b.id}>
-          <h1>{b.title}</h1>
-          <p>{b.body}</p>
-        </div>
-      ))}
-      <input
-        value={newTitle}
-        onChange={(e) => setNewTitle(e.target.value)}
-      ></input>
-      <input
-        value={newBody}
-        onChange={(e) => setNewBody(e.target.value)}
-      ></input>
-      <AddIcon onClick={onSubmitNewBlog} />
+      <Grid className={classes.frontPageCont} container>
+        {filteredBlogs.map((b) => (
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <div key={b.id}>
+                <Typography variant="h4">{b.title}</Typography>
+                <p>{b.body}</p>
+                <DeleteIcon onClick={() => dispatch(deleteBlog(b.id))} />
+                {b.favorite === false ? (
+                  <FavoriteBorderIcon
+                    onClick={() => dispatch(toggleFavorite(b.id))}
+                  />
+                ) : (
+                  <FavoriteIcon
+                    onClick={() => dispatch(toggleFavorite(b.id))}
+                  />
+                )}
+              </div>
+            </Paper>
+          </Grid>
+        ))}
+        {/* <input
+          value={newTitle}
+          onChange={(e) => setNewTitle(e.target.value)}
+        ></input>
+        <input
+          value={newBody}
+          onChange={(e) => setNewBody(e.target.value)}
+        ></input>
+        <AddIcon onClick={onSubmitNewBlog} /> */}
+      </Grid>
     </div>
   );
 };

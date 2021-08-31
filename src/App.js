@@ -1,7 +1,15 @@
+import React, { useState } from "react";
+import NavBar from "./components/NavBar";
 import Frontpage from "./components/Frontpage";
 
 function App() {
-  return <Frontpage></Frontpage>;
+  const [search, setSearch] = useState("");
+  return (
+    <div>
+      <NavBar setSearch={setSearch} />
+      <Frontpage search={search}></Frontpage>
+    </div>
+  );
 }
 
 export default App;
