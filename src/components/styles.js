@@ -18,6 +18,7 @@ export default makeStyles((theme) => ({
   },
   searchBar: {
     position: "relative",
+    marginRight: "25px",
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     "&:hover": {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -47,13 +48,16 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       width: "25ch",
       "&:hover": {
-        width: "35ch",
+        width: "30ch",
       },
     },
   },
   frontPageCont: {
     marginTop: "120px",
     padding: "0 20vw",
+    [theme.breakpoints.down("sm")]: {
+      padding: "0 5vw",
+    },
   },
   paper: { padding: "25px", marginBottom: "15px" },
 }));

@@ -5,7 +5,7 @@ import Frontpage from "./components/Frontpage";
 function App() {
   const [search, setSearch] = useState("");
   return (
-    <div>
+    <div style={{ fontFamily: "Sarabun" }}>
       <NavBar setSearch={setSearch} />
       <Frontpage search={search}></Frontpage>
     </div>

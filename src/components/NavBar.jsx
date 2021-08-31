@@ -6,13 +6,15 @@ import {
   Menu,
   MenuItem,
   Button,
+  Dialog,
 } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
+import { SearchIcon, AddIcon } from "../utils/materialUI_icons/index";
 import useStyles from "./styles";
 
 const NavBar = ({ setSearch }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = React.useState(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -43,6 +45,7 @@ const NavBar = ({ setSearch }) => {
             transformOrigin={{ vertical: "top", horizontal: "center" }}
             onClose={handleClose}
           >
+            <MenuItem onClick={handleClose}>Home</MenuItem>
             <MenuItem onClick={handleClose}>Favorite Blogs</MenuItem>
           </Menu>
           <div className={classes.searchBar}>
@@ -55,6 +58,7 @@ const NavBar = ({ setSearch }) => {
               placeholder="Search..."
             />
           </div>
+          <AddIcon />
         </Toolbar>
       </AppBar>
     </div>
