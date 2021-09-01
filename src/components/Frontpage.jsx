@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import NavBar from "./NavBar";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addNewBlog,
@@ -14,12 +13,19 @@ import {
   FavoriteIcon,
 } from "../utils/materialUI_icons/index";
 
-import { Grid, Paper, Typography } from "@material-ui/core";
+import {
+  Grid,
+  Paper,
+  Typography,
+  Textfield,
+  Dialog,
+  DialogActions,
+  DialogContent,
+} from "@material-ui/core";
 import useStyles from "./styles";
-
 import { v4 as uuidv4 } from "uuid";
 
-const Frontpage = ({ search }) => {
+const Frontpage = ({ search, open, handleDialogClose }) => {
   const dispatch = useDispatch();
   const blogs = useSelector((state) => state.blogs.blogCollection);
   const [newTitle, setNewTitle] = useState("");
@@ -90,6 +96,7 @@ const Frontpage = ({ search }) => {
             </Paper>
           </Grid>
         ))}
+
         {/* <input
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}

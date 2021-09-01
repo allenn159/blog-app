@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import {
-  AppBar,
-  Toolbar,
-  InputBase,
-  Menu,
-  MenuItem,
-  Button,
-  Dialog,
-} from "@material-ui/core";
+import { AppBar, Toolbar, InputBase, Typography } from "@material-ui/core";
 import { SearchIcon, AddIcon } from "../utils/materialUI_icons/index";
+import { Link } from "react-router-dom";
 import useStyles from "./styles";
 
-const NavBar = ({ setSearch }) => {
+const NavBar = ({ setSearch, handleDialogOpen }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
-  const [open, setOpen] = React.useState(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -23,31 +15,15 @@ const NavBar = ({ setSearch }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <div>
       <AppBar className={classes.navBarCont}>
         <Toolbar>
-          <Button
-            aria-controls="simple-menu"
-            aria-haspopup="true"
-            className={classes.title}
-            onClick={handleClick}
-          >
+          <Typography component={Link} to="/" className={classes.title}>
             Blog App
-          </Button>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            getContentAnchorEl={null}
-            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-            transformOrigin={{ vertical: "top", horizontal: "center" }}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>Home</MenuItem>
-            <MenuItem onClick={handleClose}>Favorite Blogs</MenuItem>
-          </Menu>
+          </Typography>
+
           <div className={classes.searchBar}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -58,7 +34,9 @@ const NavBar = ({ setSearch }) => {
               placeholder="Search..."
             />
           </div>
-          <AddIcon />
+          <Link to="/addblog">
+            <AddIcon className={classes.addIcon} />
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

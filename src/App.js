@@ -1,14 +1,39 @@
 import React, { useState } from "react";
 import NavBar from "./components/NavBar";
 import Frontpage from "./components/Frontpage";
+import AddBlog from "./components/AddBlog";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   const [search, setSearch] = useState("");
+  const [open, setOpen] = React.useState(false);
+
+  const handleDialogOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <div style={{ fontFamily: "Sarabun" }}>
-      <NavBar setSearch={setSearch} />
-      <Frontpage search={search}></Frontpage>
-    </div>
+    <Router>
+      <div style={{ fontFamily: "Sarabun" }}>
+        <NavBar setSearch={setSearch} handleDialogOpen={handleDialogOpen} />
+        <Switch>
+          <Route exact path="/">
+            <Frontpage
+              search={search}
+              open={open}
+              handleDialogClose={handleDialogClose}
+            />
+          </Route>
+          <Route exact path="/addblog">
+            <AddBlog />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

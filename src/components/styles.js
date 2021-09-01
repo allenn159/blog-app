@@ -13,12 +13,17 @@ export default makeStyles((theme) => ({
     flexGrow: 0,
     fontSize: "3vh",
     color: "white",
+    textDecoration: "none",
     borderRadius: "10px",
     marginRight: "25px",
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "block",
+    },
   },
   searchBar: {
     position: "relative",
-    marginRight: "25px",
+    marginRight: "35px",
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     "&:hover": {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -52,6 +57,9 @@ export default makeStyles((theme) => ({
       },
     },
   },
+  addIcon: {
+    color: "white",
+  },
   frontPageCont: {
     marginTop: "120px",
     padding: "0 20vw",
@@ -60,4 +68,16 @@ export default makeStyles((theme) => ({
     },
   },
   paper: { padding: "25px", marginBottom: "15px" },
+  dialogCont: {
+    marginBottom: "400px",
+    width: "1000px",
+
+    textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      width: "400px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "275px",
+    },
+  },
 }));
