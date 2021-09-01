@@ -34,10 +34,9 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     addNewBlog: (state, action) => {
-      // state.blogCollection.push(action.payload);
       return {
         ...state,
-        blogCollection: [...state.blogCollection, action.payload],
+        blogCollection: [action.payload, ...state.blogCollection],
       };
     },
     deleteBlog: (state, action) => {

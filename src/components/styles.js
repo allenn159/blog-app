@@ -8,8 +8,17 @@ export default makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
-
+  homeIcon: {
+    display: "none",
+    color: "white",
+    [theme.breakpoints.down("sm")]: {
+      display: "block",
+      marginRight: "35px",
+      marginLeft: "10px",
+    },
+  },
   title: {
+    fontFamily: "Sarabun",
     flexGrow: 0,
     fontSize: "3vh",
     color: "white",
@@ -20,6 +29,10 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
+  },
+  addTitle: {
+    fontFamily: "Sarabun",
+    fontSize: "5vh",
   },
   searchBar: {
     position: "relative",
@@ -68,16 +81,31 @@ export default makeStyles((theme) => ({
     },
   },
   paper: { padding: "25px", marginBottom: "15px" },
-  dialogCont: {
-    marginBottom: "400px",
-    width: "1000px",
-
+  addPaper: {
+    position: "relative",
     textAlign: "center",
+    padding: "25px",
+    marginBottom: "15px",
+  },
+  formTitle: {
+    textAlign: "center",
+    width: "30vw",
+    margin: "40px 0",
     [theme.breakpoints.down("sm")]: {
-      width: "400px",
+      width: "50vw",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "275px",
+  },
+  formBody: {
+    textAlign: "center",
+    width: "45vw",
+    [theme.breakpoints.down("sm")]: {
+      width: "70vw",
     },
+  },
+  button: {
+    fontFamily: "Sarabun",
+    backgroundColor: "#2A0944",
+    color: "white",
+    marginTop: "20px",
   },
 }));

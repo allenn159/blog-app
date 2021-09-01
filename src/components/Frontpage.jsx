@@ -7,25 +7,16 @@ import {
 } from "../features/counterSlice";
 
 import {
-  AddIcon,
   DeleteIcon,
   FavoriteBorderIcon,
   FavoriteIcon,
 } from "../utils/materialUI_icons/index";
 
-import {
-  Grid,
-  Paper,
-  Typography,
-  Textfield,
-  Dialog,
-  DialogActions,
-  DialogContent,
-} from "@material-ui/core";
+import { Grid, Paper, Typography } from "@material-ui/core";
 import useStyles from "./styles";
 import { v4 as uuidv4 } from "uuid";
 
-const Frontpage = ({ search, open, handleDialogClose }) => {
+const Frontpage = ({ search }) => {
   const dispatch = useDispatch();
   const blogs = useSelector((state) => state.blogs.blogCollection);
   const [newTitle, setNewTitle] = useState("");
@@ -81,7 +72,7 @@ const Frontpage = ({ search, open, handleDialogClose }) => {
             <Paper className={classes.paper}>
               <div key={b.id}>
                 <Typography variant="h4">{b.title}</Typography>
-                <p>{b.body}</p>
+                <p style={{ whiteSpace: "pre-line" }}>{b.body}</p>
                 <DeleteIcon onClick={() => dispatch(deleteBlog(b.id))} />
                 {b.favorite === false ? (
                   <FavoriteBorderIcon
