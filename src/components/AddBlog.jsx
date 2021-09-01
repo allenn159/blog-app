@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Typography, Paper, TextField, Button, Grid } from "@material-ui/core";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addNewBlog } from "../features/counterSlice";
+import { useHistory } from "react-router-dom";
 
 import useStyles from "./styles";
 import { v4 as uuidv4 } from "uuid";
@@ -11,6 +12,7 @@ const AddBlog = () => {
   const dispatch = useDispatch();
   const [newTitle, setNewTitle] = useState("");
   const [newBody, setNewBody] = useState("");
+  let history = useHistory();
 
   const onSubmitNewBlog = (e) => {
     e.preventDefault();
@@ -25,6 +27,8 @@ const AddBlog = () => {
     dispatch(addNewBlog(newBlog));
     setNewTitle("");
     setNewBody("");
+
+    history.push("/");
   };
 
   return (

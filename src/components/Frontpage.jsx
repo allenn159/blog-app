@@ -14,34 +14,14 @@ import {
 
 import { Grid, Paper, Typography } from "@material-ui/core";
 import useStyles from "./styles";
-import { v4 as uuidv4 } from "uuid";
 
 const Frontpage = ({ search }) => {
   const dispatch = useDispatch();
   const blogs = useSelector((state) => state.blogs.blogCollection);
-  const [newTitle, setNewTitle] = useState("");
-  const [newBody, setNewBody] = useState("");
   const [filteredBlogs, setFilteredBlogs] = useState(blogs || []);
 
   const classes = useStyles();
   const didMount = useRef(false);
-
-  const onSubmitNewBlog = (e) => {
-    e.preventDefault();
-
-    if (newTitle === "" && newBody === "") return;
-
-    const newBlog = {
-      id: uuidv4(),
-      title: newTitle,
-      body: newBody,
-      favorite: false,
-    };
-
-    dispatch(addNewBlog(newBlog));
-    setNewTitle("");
-    setNewBody("");
-  };
 
   useEffect(() => {
     setFilteredBlogs(blogs);

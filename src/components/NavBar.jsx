@@ -1,20 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { AppBar, Toolbar, InputBase, Typography } from "@material-ui/core";
 import { SearchIcon, AddIcon, HomeIcon } from "../utils/materialUI_icons/index";
 import { Link } from "react-router-dom";
 import useStyles from "./styles";
 
-const NavBar = ({ setSearch, handleDialogOpen }) => {
+const NavBar = ({ setSearch }) => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <div>
