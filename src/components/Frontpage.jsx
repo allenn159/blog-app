@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  addNewBlog,
-  deleteBlog,
-  toggleFavorite,
-} from "../features/counterSlice";
+import { deleteBlog, toggleFavorite } from "../features/counterSlice";
 
 import {
   DeleteIcon,
@@ -48,35 +44,32 @@ const Frontpage = ({ search }) => {
     <div>
       <Grid className={classes.frontPageCont} container>
         {filteredBlogs.map((b) => (
-          <Grid item xs={12}>
+          <Grid key={b.id} item xs={12}>
             <Paper className={classes.paper}>
-              <div key={b.id}>
-                <Typography variant="h4">{b.title}</Typography>
+              <div>
+                <Typography className={classes.blogTitle} variant="h4">
+                  {b.title}{" "}
+                  {b.favorite === false ? (
+                    <FavoriteBorderIcon
+                      className={classes.heartIcon}
+                      onClick={() => dispatch(toggleFavorite(b.id))}
+                    />
+                  ) : (
+                    <FavoriteIcon
+                      className={classes.heartIcon}
+                      onClick={() => dispatch(toggleFavorite(b.id))}
+                    />
+                  )}
+                </Typography>
                 <p style={{ whiteSpace: "pre-line" }}>{b.body}</p>
-                <DeleteIcon onClick={() => dispatch(deleteBlog(b.id))} />
-                {b.favorite === false ? (
-                  <FavoriteBorderIcon
-                    onClick={() => dispatch(toggleFavorite(b.id))}
-                  />
-                ) : (
-                  <FavoriteIcon
-                    onClick={() => dispatch(toggleFavorite(b.id))}
-                  />
-                )}
+                <DeleteIcon
+                  className={classes.deleteIcon}
+                  onClick={() => dispatch(deleteBlog(b.id))}
+                />
               </div>
             </Paper>
           </Grid>
         ))}
-
-        {/* <input
-          value={newTitle}
-          onChange={(e) => setNewTitle(e.target.value)}
-        ></input>
-        <input
-          value={newBody}
-          onChange={(e) => setNewBody(e.target.value)}
-        ></input>
-        <AddIcon onClick={onSubmitNewBlog} /> */}
       </Grid>
     </div>
   );

@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
   homeIcon: {
     display: "none",
     color: "white",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       display: "block",
       marginRight: "35px",
       marginLeft: "10px",
@@ -24,7 +24,7 @@ export default makeStyles((theme) => ({
     color: "white",
     textDecoration: "none",
     borderRadius: "10px",
-    marginRight: "25px",
+    marginRight: "35px",
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
@@ -33,6 +33,11 @@ export default makeStyles((theme) => ({
   addTitle: {
     fontFamily: "Sarabun",
     fontSize: "5vh",
+  },
+  blogTitle: {
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.8em",
+    },
   },
   searchBar: {
     position: "relative",
@@ -72,6 +77,21 @@ export default makeStyles((theme) => ({
   },
   addIcon: {
     color: "white",
+    marginRight: "35px",
+  },
+  heartIcon: {
+    color: "#DF2E2E",
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
+  deleteIcon: {
+    position: "absolute",
+    right: 15,
+    bottom: 10,
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   frontPageCont: {
     marginTop: "120px",
@@ -80,9 +100,12 @@ export default makeStyles((theme) => ({
       padding: "0 5vw",
     },
   },
-  paper: { padding: "25px", marginBottom: "15px" },
-  addPaper: {
+  paper: {
     position: "relative",
+    padding: "25px 25px 45px 25px",
+    marginBottom: "15px",
+  },
+  addPaper: {
     textAlign: "center",
     padding: "25px",
     marginBottom: "15px",
@@ -104,7 +127,7 @@ export default makeStyles((theme) => ({
   },
   button: {
     fontFamily: "Sarabun",
-    backgroundColor: "#2A0944",
+    backgroundColor: "#001E69",
     color: "white",
     marginTop: "20px",
   },

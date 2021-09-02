@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBar from "./components/NavBar";
 import Frontpage from "./components/Frontpage";
 import AddBlog from "./components/AddBlog";
+import FavoriteBlogs from "./components/FavoriteBlogs";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route exact path="/addblog">
             <AddBlog />
+          </Route>
+          <Route>
+            <FavoriteBlogs search={search} />
           </Route>
         </Switch>
       </div>
