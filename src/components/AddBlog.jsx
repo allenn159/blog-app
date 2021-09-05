@@ -62,7 +62,15 @@ const AddBlog = () => {
               />
             </Grid>
           </Grid>
-          <Button type="submit" className={classes.button} variant="contained">
+          <Button
+            type="submit"
+            style={{
+              fontFamily: "Sarabun",
+              backgroundColor: "#001E69",
+              color: "white",
+            }}
+            variant="contained"
+          >
             Submit
           </Button>
         </Paper>

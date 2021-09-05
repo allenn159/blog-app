@@ -125,10 +125,4 @@ export default makeStyles((theme) => ({
       width: "70vw",
     },
   },
-  button: {
-    fontFamily: "Sarabun",
-    backgroundColor: "#001E69",
-    color: "white",
-    marginTop: "20px",
-  },
 }));
