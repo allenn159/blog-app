@@ -69,7 +69,6 @@ const AddBlog = () => {
               backgroundColor: "#001E69",
               color: "white",
             }}
-            variant="contained"
           >
             Submit
           </Button>
