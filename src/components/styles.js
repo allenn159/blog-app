@@ -33,6 +33,7 @@ export default makeStyles((theme) => ({
   addTitle: {
     fontFamily: "Sarabun",
     fontSize: "5vh",
+    marginBottom: "30px",
   },
   blogTitle: {
     [theme.breakpoints.down("sm")]: {
@@ -113,7 +114,7 @@ export default makeStyles((theme) => ({
   formTitle: {
     textAlign: "center",
     width: "30vw",
-    margin: "40px 0",
+    marginBottom: "30px",
     [theme.breakpoints.down("sm")]: {
       width: "50vw",
     },
@@ -121,6 +122,7 @@ export default makeStyles((theme) => ({
   formBody: {
     textAlign: "center",
     width: "45vw",
+    marginBottom: "30px",
     [theme.breakpoints.down("sm")]: {
       width: "70vw",
     },
