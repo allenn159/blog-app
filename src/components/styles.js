@@ -114,7 +114,6 @@ export default makeStyles((theme) => ({
   formTitle: {
     textAlign: "center",
     width: "30vw",
-    marginBottom: "30px",
     [theme.breakpoints.down("sm")]: {
       width: "50vw",
     },
@@ -122,7 +121,6 @@ export default makeStyles((theme) => ({
   formBody: {
     textAlign: "center",
     width: "45vw",
-    marginBottom: "30px",
     [theme.breakpoints.down("sm")]: {
       width: "70vw",
     },

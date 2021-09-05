@@ -39,7 +39,7 @@ const AddBlog = () => {
             <Grid item xs={12}>
               <Typography className={classes.addTitle}>Add New Blog</Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid style={{ marginBottom: "30px" }} item xs={12}>
               <TextField
                 className={classes.formTitle}
                 label="Title"
@@ -49,7 +49,7 @@ const AddBlog = () => {
                 required={true}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid style={{ marginBottom: "30px" }} item xs={12}>
               <TextField
                 minRows={15}
                 className={classes.formBody}
