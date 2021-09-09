@@ -20,7 +20,7 @@ export default makeStyles((theme) => ({
   title: {
     fontFamily: "Sarabun",
     flexGrow: 0,
-    fontSize: "3vh",
+    fontSize: "25px",
     color: "white",
     textDecoration: "none",
     borderRadius: "10px",
